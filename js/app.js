@@ -7,7 +7,7 @@ const relogio = document.getElementById('timer');
 
 let resultado, nivel = 1;
 let save = Number(localStorage.getItem("save"));
-let contador = 5;
+let contador;
 let intervalo; 
 
 if(save > 1) {
@@ -29,32 +29,177 @@ function checarRecorde() {
 function gerarNovaQuestao() {
     clearInterval(intervalo);
     
-    contador = 5;
     relogio.textContent = contador; 
 
-    let numero1 = Math.ceil(Math.random() * 10);
-    let numero2 = Math.ceil(Math.random() * 10);
-    let operacao;
+    if(nivel <= 10) {
 
-    switch(Math.ceil(Math.random() * 3)) {
-        case 1:
-            operacao = '+';
-            resultado = numero1 + numero2;
-            break;
-        case 2:
-            operacao = '-';
-            while(numero2 > numero1) {
-                numero2 = Math.ceil(Math.random() * 10);
-            }
-            resultado = numero1 - numero2;
-            break;
-        case 3:
-            operacao = 'x';
-            resultado = numero1 * numero2;
-            break;
+        contador = 10;
+
+        let numero1 = Math.ceil(Math.random() * 10);
+        let numero2 = Math.ceil(Math.random() * 10);
+        let operacao;
+
+        switch(Math.ceil(Math.random() * 2)) {
+            case 1:
+                operacao = '+';
+                resultado = numero1 + numero2;
+                break;
+            case 2:
+                operacao = '-';
+                while(numero2 > numero1) {
+                    numero2 = Math.ceil(Math.random() * 10);
+                }
+                resultado = numero1 - numero2;
+                break;
+        }
+
+        questao.textContent = `${numero1} ${operacao} ${numero2}`;
+
+    } else if(nivel <= 20) {
+
+        contador = 10;
+
+        let numero1 = Math.ceil(Math.random() * 12);
+        let numero2 = Math.ceil(Math.random() * 12);
+        let operacao;
+
+        switch(Math.ceil(Math.random() * 3)) {
+            case 1:
+                operacao = '+';
+                resultado = numero1 + numero2;
+                break;
+            case 2:
+                operacao = '-';
+                resultado = numero1 - numero2;
+                break;
+            case 3:
+                operacao = 'x';
+                if(numero1 >= 11 || numero2 >= 11) {
+                    numero1 = Math.ceil(Math.random() * 10);
+                    numero2 = Math.ceil(Math.random() * 10);
+                }
+                resultado = numero1 * numero2;
+                break;
+        }
+
+        questao.textContent = `${numero1} ${operacao} ${numero2}`;
+    } else if (nivel <= 35) {
+        contador = 10;
+
+        let numero1 = Math.ceil(Math.random() * 20);
+        let numero2 = Math.ceil(Math.random() * 20);
+        let operacao;
+
+        switch(Math.ceil(Math.random() * 4)) {
+            case 1:
+                operacao = '+';
+                resultado = numero1 + numero2;
+                break;
+            case 2:
+                operacao = '-';
+                resultado = numero1 - numero2;
+                break;
+            case 3:
+                operacao = 'x';
+                if(numero1 >= 12 || numero2 >= 12){
+                    numero1 = Math.ceil(Math.random() * 12);
+                    numero2 = Math.ceil(Math.random() * 12);
+                }
+                resultado = numero1 * numero2;
+                break;
+            case 4:
+                operacao = '÷';
+                while(numero1 % numero2 !== 0){
+                    numero2 = Math.ceil(Math.random() * 20);
+                }
+                resultado = numero1 / numero2;
+                break;
+        }
+
+        questao.textContent = `${numero1} ${operacao} ${numero2}`;
+    } else if (nivel <= 60) {
+        contador = 20;
+
+        let numero1;
+        let numero2;
+        let numero3;
+        let operacao;
+        let operacao2;
+
+        switch (Math.ceil(Math.random() * 4)) {
+            case 1:
+            case 2:
+            case 3:
+                switch(Math.ceil(Math.random() * 4)) {
+                    case 1:
+                        numero1 = Math.ceil(Math.random() * 50);
+                        numero2 = Math.ceil(Math.random() * 50);
+                        operacao = '+';
+                        resultado = numero1 + numero2;
+                        break;
+                    case 2:
+                        numero1 = Math.ceil(Math.random() * 50);
+                        numero2 = Math.ceil(Math.random() * 50);
+                        operacao = '-';
+                        resultado = numero1 - numero2;
+                        break;
+                    case 3:
+                        numero1 = Math.ceil(Math.random() * 16);
+                        numero2 = Math.ceil(Math.random() * 16);
+                        operacao = 'x';
+                        resultado = numero1 * numero2;
+                        break;
+                    case 4:
+                        numero1 = Math.ceil(Math.random() * 200);
+                        numero2 = Math.ceil(Math.random() * 200);
+                        operacao = '÷';
+                        while(numero1 % numero2 !== 0){
+                            numero2 = Math.ceil(Math.random() * 20);
+                        }
+                        resultado = numero1 / numero2;
+                        break;
+                }
+                questao.textContent = `${numero1} ${operacao} ${numero2}`;
+                break;
+            case 4:
+                switch(Math.ceil(Math.random() * 4)) {
+                    case 1:
+                        numero1 = Math.ceil(Math.random() * 50);
+                        numero2 = Math.ceil(Math.random() * 50);
+                        numero3 = Math.ceil(Math.random() * 50);
+                        operacao = '+';
+                        operacao2 = '+';
+                        resultado = numero1 + numero2 + numero3;
+                        break;
+                    case 2:
+                        numero1 = Math.ceil(Math.random() * 12);
+                        numero2 = Math.ceil(Math.random() * 12);
+                        numero3 = Math.ceil(Math.random() * 12);
+                        operacao = 'x';
+                        operacao2 = 'x';
+                        resultado = numero1 * numero2 * numero3;
+                        break;
+                    case 3:
+                        numero1 = Math.ceil(Math.random() * 12);
+                        numero2 = Math.ceil(Math.random() * 12);
+                        numero3 = Math.ceil(Math.random() * 50);
+                        operacao = 'x';
+                        operacao2 = '+';
+                        resultado = (numero1 * numero2) + numero3;
+                        break;
+                    case 4:
+                        numero1 = Math.ceil(Math.random() * 50);
+                        numero2 = Math.ceil(Math.random() * 12);
+                        numero3 = Math.ceil(Math.random() * 12);
+                        operacao = '+';
+                        operacao2 = 'x';
+                        resultado = numero1 + (numero2 * numero3);
+                        break;
+                }
+                questao.textContent = `${numero1} ${operacao} ${numero2} ${operacao2} ${numero3}`;
+                break;
+        }
     }
-
-    questao.textContent = `${numero1} ${operacao} ${numero2}`;
 
     intervalo = setInterval(() => {
         contador -= 1;
