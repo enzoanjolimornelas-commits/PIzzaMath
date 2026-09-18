@@ -7,7 +7,7 @@
 }
 
 body {
-    font-family: 'Fredoka';
+    font-family: 'Fredoka', sans-serif;
     display: grid;
     grid-template-areas: "topo topo topo"
                         "estudo estudo estudo"

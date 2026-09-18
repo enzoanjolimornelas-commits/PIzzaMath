@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -11,6 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'Fredoka', sans-serif;
 }
 
 form#queijo {
@@ -19,7 +22,36 @@ form#queijo {
     height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: 4px;
+    border-radius: 10px;
+
+    p#questao {
+        color: #eb7a10;
+        font-size: 100px;
+    }
+
+    label#nivel {
+        color: #1f554077;
+        font-size: 50px;
+    }
+
+    input#resposta {
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+        border-color: transparent;
+    }
+
+    button#inserir {
+        padding: 20px;
+        outline: none;
+        border-color: transparent;
+        border-radius: 10px;
+        background-color: #eb7a10;
+
+        &:hover {
+            background-color: #eb7a109c;
+        }
+    }
 }
