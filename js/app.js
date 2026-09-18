@@ -49,7 +49,7 @@ formulario.addEventListener('submit', function(event) {
     } else {
         alert("Erro! Nível: " + nivel);
         if(nivel > save) {
-            save = localStorage.setItem("save", nivel);
+            localStorage.setItem("save", nivel);
             recorde.textContent = `Recorde: ${save}`;
             recorde.style.display = 'block';
         }
