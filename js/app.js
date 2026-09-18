@@ -1,9 +1,16 @@
 const formulario = document.getElementById('queijo');
 const level = document.getElementById('nivel');
 const questao = document.getElementById('questao');
+const recorde = document.getElementById('recorde');
 const resposta = document.getElementById('resposta');
 
 let resultado, nivel = 1;
+let save = Number(localStorage.getItem("save"));
+
+if(save > 1) {
+    recorde.textContent = `Recorde: ${save}`;
+    recorde.style.display = 'block';
+}
 
 level.textContent = "Nível " + nivel; 
 
@@ -36,12 +43,16 @@ formulario.addEventListener('submit', function(event) {
     const respostaDoJogador = Number(resposta.value);
 
     if(respostaDoJogador === resultado) {
-        console.log("Acertou!");
         nivel += 1;
         level.textContent = "Nível " + nivel;
         gerarNovaQuestao(); 
     } else {
-        console.log("Errou! Fim de jogo.");
+        alert("Erro! Nível: " + nivel);
+        if(nivel > save) {
+            save = localStorage.setItem("save", nivel);
+            recorde.textContent = `Recorde: ${save}`;
+            recorde.style.display = 'block';
+        }
         gerarNovaQuestao();
         nivel = 1;
         level.textContent = "Nível " + nivel;

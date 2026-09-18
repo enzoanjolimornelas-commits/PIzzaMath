@@ -43,6 +43,14 @@ form#queijo {
         border-color: transparent;
     }
 
+    p#recorde {
+        color: yellow;
+        background-color: blue;
+        padding: 10px;
+        border-radius: 10px;
+        display: none;
+    }
+
     button#inserir {
         padding: 20px;
         outline: none;
