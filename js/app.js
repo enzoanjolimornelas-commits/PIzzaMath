@@ -5,7 +5,7 @@ const recorde = document.getElementById('recorde');
 const resposta = document.getElementById('resposta');
 const relogio = document.getElementById('timer');
 
-let resultado, nivel = 61;
+let resultado, nivel = 1;
 let save = Number(localStorage.getItem("save"));
 let contador;
 let intervalo; 
